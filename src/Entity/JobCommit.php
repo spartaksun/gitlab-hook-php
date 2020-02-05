@@ -36,22 +36,6 @@ class JobCommit extends BaseObject
     private $status;
 
     /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     */
-    public function setId(?int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @return string|null
      */
     public function getSha(): ?string

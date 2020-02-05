@@ -10,8 +10,7 @@ namespace Spartaksun\GitLabHook\Entity;
  */
 class Project extends BaseObject
 {
-    /** @var string */
-    private $id;
+
     /** @var string */
     private $name;
     /** @var string */
@@ -22,6 +21,8 @@ class Project extends BaseObject
     private $avatarUrl;
     /** @var string */
     private $gitSshUrl;
+    /** @var string */
+    private $gitHttpUrl;
     /** @var string */
     private $namespace;
     /** @var string */
@@ -38,22 +39,6 @@ class Project extends BaseObject
     private $sshUrl;
     /** @var string */
     private $httpUrl;
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string
@@ -114,7 +99,7 @@ class Project extends BaseObject
     /**
      * @param string $avatarUrl
      */
-    public function setAvatarUrl(string $avatarUrl): void
+    public function setAvatarUrl(?string $avatarUrl): void
     {
         $this->avatarUrl = $avatarUrl;
     }
@@ -261,6 +246,22 @@ class Project extends BaseObject
     public function setHttpUrl(string $httpUrl): void
     {
         $this->httpUrl = $httpUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGitHttpUrl(): string
+    {
+        return $this->gitHttpUrl;
+    }
+
+    /**
+     * @param string $gitHttpUrl
+     */
+    public function setGitHttpUrl(string $gitHttpUrl): void
+    {
+        $this->gitHttpUrl = $gitHttpUrl;
     }
 
 }

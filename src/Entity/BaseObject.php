@@ -37,13 +37,13 @@ abstract class BaseObject
      */
     public function getId(): ?int
     {
-        return $this->id;
+        return intval($this->id);
     }
 
     /**
      * @param int|null $id
      */
-    public function setId(?int $id): void
+    public function setId($id): void
     {
         $this->id = $id;
     }

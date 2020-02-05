@@ -57,7 +57,7 @@ class MergeRequest extends BaseObject
     /**
      * @var string|null
      */
-    private $merge_status;
+    private $mergeStatus;
     /**
      * @var int|null
      */

@@ -11,7 +11,11 @@ trait ProjectAwareTrait
     /**
      * @var Project|null
      */
-private $project;
+    private $project;
+    /**
+     * @var integer|null
+     */
+    private $projectId;
 
 
     /**
@@ -30,15 +34,19 @@ private $project;
         $this->project = $project;
     }
 
+    public function setProjectId($id) {
+        $this->projectId = (int)$id;
+    }
+
     /**
      * @return int|null
      *
      */
     public function getProjectId(): ?int {
         if($this->project) {
-            return $this->project->getId();
+            return (int) $this->project->getId();
         }
-        return  null;
+        return  $this->getProjectId();
     }
 
 }

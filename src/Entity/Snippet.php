@@ -9,17 +9,6 @@ use Spartaksun\GitLabHook\Entity\Traits\CreatedUpdatedTrait;
 /**
  * Class Snippet
  * @package Spartaksun\GitLabHook\Entity
- *  "id": 53,
- * "title": "test",
- * "content": "puts 'Hello world'",
- * "author_id": 1,
- * "project_id": 5,
- * "created_at": "2015-04-09 02:40:38 UTC",
- * "updated_at": "2015-04-09 02:40:38 UTC",
- * "file_name": "test.rb",
- * "expires_at": null,
- * "type": "ProjectSnippet",
- * "visibility_level": 0
  */
 class Snippet extends BaseObject
 {
@@ -66,5 +55,132 @@ class Snippet extends BaseObject
      */
     private $visibilityLevel;
 
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     */
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string|null $content
+     */
+    public function setContent(?string $content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAuthorId(): ?int
+    {
+        return $this->authorId;
+    }
+
+    /**
+     * @param int|null $authorId
+     */
+    public function setAuthorId(?int $authorId): void
+    {
+        $this->authorId = $authorId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getProjectId(): ?int
+    {
+        return $this->projectId;
+    }
+
+    /**
+     * @param int|null $projectId
+     */
+    public function setProjectId(?int $projectId): void
+    {
+        $this->projectId = $projectId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * @param string|null $fileName
+     */
+    public function setFileName(?string $fileName): void
+    {
+        $this->fileName = $fileName;
+    }
+
+    /**
+     * @return \DateTimeImmutable|null
+     */
+    public function getExpiresAt(): ?\DateTimeImmutable
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * @param \DateTimeImmutable|null $expiresAt
+     */
+    public function setExpiresAt(?\DateTimeImmutable $expiresAt): void
+    {
+        $this->expiresAt = $expiresAt;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     */
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getVisibilityLevel(): ?int
+    {
+        return $this->visibilityLevel;
+    }
+
+    /**
+     * @param int|null $visibilityLevel
+     */
+    public function setVisibilityLevel(?int $visibilityLevel): void
+    {
+        $this->visibilityLevel = $visibilityLevel;
+    }
 
 }
