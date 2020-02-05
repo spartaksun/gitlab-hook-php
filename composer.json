@@ -9,7 +9,12 @@
             "email": "2697024@gmail.com"
         }
     ],
-    "require": {},
+    "scripts": {
+      "test": "phpunit"
+    },
+    "require": {
+        "phpunit/phpunit": "^8.5"
+    },
     "autoload": {
         "psr-4": {
             "Spartaksun\\GitLabHook\\": "src/"
