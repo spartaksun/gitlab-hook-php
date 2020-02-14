@@ -1,4 +1,5 @@
-<?php /* @noinspection PhpUnused */declare(strict_types=1);
+<?php /* @noinspection PhpUnused */
+declare(strict_types=1);
 
 
 namespace Spartaksun\GitLabHook\Entity\Traits;
@@ -6,12 +7,17 @@ namespace Spartaksun\GitLabHook\Entity\Traits;
 
 use Spartaksun\GitLabHook\Entity\CommitAuthor;
 
-trait CommitAuthorAwareTrait
+trait AuthorAwareTrait
 {
     /**
      * @var CommitAuthor
      */
     private $author;
+
+    /**
+     * @var int|null
+     */
+    private $authorId;
 
     /**
      * @return CommitAuthor|null
@@ -29,11 +35,20 @@ trait CommitAuthorAwareTrait
         $this->author = $author;
     }
 
-    public function getAuthorId(): ?int {
-        if($this->author) {
+    public function getAuthorId(): ?int
+    {
+        if ($this->author) {
             return $this->author->getId();
         }
         return null;
+    }
+
+    public function setAuthorId(?int $id) {
+        if(!$this->author) {
+            $author = new CommitAuthor();
+            $author->setId($id);
+            $this->author = new CommitAuthor();
+        }
     }
 
 }

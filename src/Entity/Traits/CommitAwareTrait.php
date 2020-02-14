@@ -1,31 +1,32 @@
-<?php /* @noinspection PhpUnused */declare(strict_types=1);
+<?php /* @noinspection PhpUnused */
+declare(strict_types=1);
 
 
 namespace Spartaksun\GitLabHook\Entity\Traits;
 
 
-use Spartaksun\GitLabHook\Entity\JobCommit;
+use Spartaksun\GitLabHook\Entity\Commit;
 
 trait CommitAwareTrait
 {
     /**
-     * @var JobCommit|null
+     * @var Commit|null
      */
     private $commit;
 
 
     /**
-     * @return JobCommit|null
+     * @return Commit|null
      */
-    public function getCommit(): ?JobCommit
+    public function getCommit(): ?Commit
     {
         return $this->commit;
     }
 
     /**
-     * @param JobCommit|null $commit
+     * @param Commit|null $commit
      */
-    public function setCommit(?JobCommit $commit): void
+    public function setCommit(?Commit $commit): void
     {
         $this->commit = $commit;
     }

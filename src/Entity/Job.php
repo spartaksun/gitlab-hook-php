@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spartaksun\GitLabHook\Entity;
 
+use DateTimeImmutable;
 use Spartaksun\GitLabHook\Entity\Traits\CommitAwareTrait;
 use Spartaksun\GitLabHook\Entity\Traits\RepositoryAwareTrait;
 use Spartaksun\GitLabHook\Entity\Traits\UserAwareTrait;
@@ -48,11 +49,11 @@ class Job extends BaseObject
      */
     private $buildName;
     /**
-     * @var \DateTimeImmutable|null
+     * @var DateTimeImmutable|null
      */
     private $buildStartedAt;
     /**
-     * @var \DateTimeImmutable|null
+     * @var DateTimeImmutable|null
      */
     private $buildFinishedAt;
     /**
@@ -79,6 +80,12 @@ class Job extends BaseObject
      * @var string|null
      */
     private $projectName;
+
+    /** @var string|null */
+    private $buildStage;
+    /** @var string|null */
+    private $buildStatus;
+
 
     /**
      * @return string
@@ -209,33 +216,33 @@ class Job extends BaseObject
     }
 
     /**
-     * @return \DateTimeImmutable|null
+     * @return DateTimeImmutable|null
      */
-    public function getBuildStartedAt(): ?\DateTimeImmutable
+    public function getBuildStartedAt(): ?DateTimeImmutable
     {
         return $this->buildStartedAt;
     }
 
     /**
-     * @param \DateTimeImmutable|null $buildStartedAt
+     * @param DateTimeImmutable|null $buildStartedAt
      */
-    public function setBuildStartedAt(?\DateTimeImmutable $buildStartedAt): void
+    public function setBuildStartedAt(?DateTimeImmutable $buildStartedAt): void
     {
         $this->buildStartedAt = $buildStartedAt;
     }
 
     /**
-     * @return \DateTimeImmutable|null
+     * @return DateTimeImmutable|null
      */
-    public function getBuildFinishedAt(): ?\DateTimeImmutable
+    public function getBuildFinishedAt(): ?DateTimeImmutable
     {
         return $this->buildFinishedAt;
     }
 
     /**
-     * @param \DateTimeImmutable|null $buildFinishedAt
+     * @param DateTimeImmutable|null $buildFinishedAt
      */
-    public function setBuildFinishedAt(?\DateTimeImmutable $buildFinishedAt): void
+    public function setBuildFinishedAt(?DateTimeImmutable $buildFinishedAt): void
     {
         $this->buildFinishedAt = $buildFinishedAt;
     }
@@ -319,4 +326,37 @@ class Job extends BaseObject
     {
         $this->projectName = $projectName;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getBuildStage(): ?string
+    {
+        return $this->buildStage;
+    }
+
+    /**
+     * @param string|null $buildStage
+     */
+    public function setBuildStage(?string $buildStage): void
+    {
+        $this->buildStage = $buildStage;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getBuildStatus(): ?string
+    {
+        return $this->buildStatus;
+    }
+
+    /**
+     * @param string|null $buildStatus
+     */
+    public function setBuildStatus(?string $buildStatus): void
+    {
+        $this->buildStatus = $buildStatus;
+    }
+
 }

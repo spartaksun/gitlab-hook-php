@@ -5,7 +5,9 @@ namespace Spartaksun\GitLabHook\Entity;
 
 use DateTimeImmutable;
 use Exception;
-use Spartaksun\GitLabHook\Entity\Traits\CommitAuthorAwareTrait;
+use Spartaksun\GitLabHook\Entity\Traits\AuthorAwareTrait;
+use Spartaksun\GitLabHook\Entity\Traits\FinishedAtTrait;
+use Spartaksun\GitLabHook\Entity\Traits\StartedAtTrait;
 
 /**
  * Class Commit
@@ -13,7 +15,9 @@ use Spartaksun\GitLabHook\Entity\Traits\CommitAuthorAwareTrait;
  */
 class Commit extends BaseObject
 {
-    use CommitAuthorAwareTrait;
+    use AuthorAwareTrait;
+    use StartedAtTrait;
+    use FinishedAtTrait;
 
     /**
      * @var string
@@ -27,6 +31,18 @@ class Commit extends BaseObject
      * @var string
      */
     private $url;
+
+    /** @var string|null */
+    private $sha;
+    /** @var string|null */
+    private $authorName;
+    /** @var string|null */
+    private $authorEmail;
+    /** @var string|null */
+    private $status;
+    /** @var string|null */
+    private $duration;
+
 
 
     /**
@@ -76,6 +92,86 @@ class Commit extends BaseObject
     public function setUrl(string $url): void
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSha(): ?string
+    {
+        return $this->sha;
+    }
+
+    /**
+     * @param string|null $sha
+     */
+    public function setSha(?string $sha): void
+    {
+        $this->sha = $sha;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAuthorName(): ?string
+    {
+        return $this->authorName;
+    }
+
+    /**
+     * @param string|null $authorName
+     */
+    public function setAuthorName(?string $authorName): void
+    {
+        $this->authorName = $authorName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAuthorEmail(): ?string
+    {
+        return $this->authorEmail;
+    }
+
+    /**
+     * @param string|null $authorEmail
+     */
+    public function setAuthorEmail(?string $authorEmail): void
+    {
+        $this->authorEmail = $authorEmail;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string|null $status
+     */
+    public function setStatus(?string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDuration(): ?string
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param string|null $duration
+     */
+    public function setDuration(?string $duration): void
+    {
+        $this->duration = $duration;
     }
 
 }

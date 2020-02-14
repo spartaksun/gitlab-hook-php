@@ -24,15 +24,6 @@ trait AssigneeAwareTrait
      */
     private $assignees = [];
 
-
-    /**
-     * @param int|null $assigneeId
-     */
-    public function setAssigneeId(?int $assigneeId): void
-    {
-        $this->assigneeId = $assigneeId;
-    }
-
     /**
      * @return User|null
      */
@@ -54,14 +45,14 @@ trait AssigneeAwareTrait
      */
     public function getAssigneeIds(): array
     {
-        if($this->assignees) {
+        if ($this->assignees) {
             $ids = [];
             foreach ($this->assignees as $assignee) {
                 $ids[] = $assignee->getId();
             }
-        } else if($this->assigneeIds) {
+        } else if ($this->assigneeIds) {
             return $this->assigneeIds;
-        } else if($this->assignee) {
+        } else if ($this->assignee) {
             return [$this->assignee->getId()];
         }
 
@@ -82,6 +73,14 @@ trait AssigneeAwareTrait
     public function getAssigneeId(): ?int
     {
         return $this->assigneeId;
+    }
+
+    /**
+     * @param int|null $assigneeId
+     */
+    public function setAssigneeId(?int $assigneeId): void
+    {
+        $this->assigneeId = $assigneeId;
     }
 
     /**

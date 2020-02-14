@@ -7,6 +7,8 @@ namespace Spartaksun\GitLabHook\Entity;
 
 use Spartaksun\GitLabHook\Entity\Traits\CreatedUpdatedTrait;
 use Spartaksun\GitLabHook\Entity\Traits\ProjectAwareTrait;
+use Spartaksun\GitLabHook\Entity\Traits\RepositoryAwareTrait;
+use Spartaksun\GitLabHook\Entity\Traits\UserAwareTrait;
 
 /**
  * Class Issue
@@ -17,6 +19,8 @@ class Issue extends BaseObject
     use CreatedUpdatedTrait;
     use ProjectAwareTrait;
     use AssigneeAwareTrait;
+    use UserAwareTrait;
+    use RepositoryAwareTrait;
 
     /**
      * @var int|null
@@ -57,6 +61,11 @@ class Issue extends BaseObject
      */
     private $iid;
 
+    /** @var string|null */
+    private $url;
+
+    /** @var string|null */
+    private $action;
 
     /**
      * @var ProjectLabel[]
@@ -207,6 +216,38 @@ class Issue extends BaseObject
     public function setIid(int $iid): void
     {
         $this->iid = $iid;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string|null $url
+     */
+    public function setUrl(?string $url): void
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAction(): ?string
+    {
+        return $this->action;
+    }
+
+    /**
+     * @param string|null $action
+     */
+    public function setAction(?string $action): void
+    {
+        $this->action = $action;
     }
 }
 

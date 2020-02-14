@@ -1,4 +1,5 @@
-<?php /* @noinspection PhpUnused */declare(strict_types=1);
+<?php /* @noinspection PhpUnused */
+declare(strict_types=1);
 
 
 namespace Spartaksun\GitLabHook\Entity\Traits;
@@ -9,24 +10,26 @@ use Exception;
 trait FinishedAtTrait
 {
     /**
-     * @var DateTimeImmutable
+     * @var DateTimeImmutable|null
      */
     private $finishedAt;
 
     /**
-     * @return DateTimeImmutable
+     * @return DateTimeImmutable|null
      */
-    public function getFinishedAt(): DateTimeImmutable
+    public function getFinishedAt(): ?DateTimeImmutable
     {
         return $this->finishedAt;
     }
 
     /**
-     * @param string $date
+     * @param string|null $date
      * @throws Exception
      */
-    public function setFinishedAt(string $date): void
+    public function setFinishedAt(?string $date): void
     {
-        $this->finishedAt = new DateTimeImmutable($date);
+        if($date) {
+            $this->finishedAt = new DateTimeImmutable($date);
+        }
     }
 }

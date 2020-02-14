@@ -1,4 +1,5 @@
-<?php /* @noinspection PhpUnused */declare(strict_types=1);
+<?php /* @noinspection PhpUnused */
+declare(strict_types=1);
 
 
 namespace Spartaksun\GitLabHook\Entity\Traits;
@@ -34,19 +35,21 @@ trait ProjectAwareTrait
         $this->project = $project;
     }
 
-    public function setProjectId($id) {
-        $this->projectId = (int)$id;
-    }
-
     /**
      * @return int|null
      *
      */
-    public function getProjectId(): ?int {
-        if($this->project) {
-            return (int) $this->project->getId();
+    public function getProjectId(): ?int
+    {
+        if ($this->project) {
+            return (int)$this->project->getId();
         }
-        return  $this->getProjectId();
+        return $this->getProjectId();
+    }
+
+    public function setProjectId($id)
+    {
+        $this->projectId = (int)$id;
     }
 
 }

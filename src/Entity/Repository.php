@@ -15,6 +15,13 @@ class Repository extends BaseObject
     private $description;
     /** @var string */
     private $homePage;
+    /** @var string|null */
+    private $gitSshUrl;
+    /** @var string|null */
+    private $gitHttpUrl;
+    /** @var string|null */
+    private $visibilityLevel;
+
 
     /**
      * @return string
@@ -78,6 +85,54 @@ class Repository extends BaseObject
     public function setHomePage(string $homePage): void
     {
         $this->homePage = $homePage;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGitSshUrl(): ?string
+    {
+        return $this->gitSshUrl;
+    }
+
+    /**
+     * @param string|null $gitSshUrl
+     */
+    public function setGitSshUrl(?string $gitSshUrl): void
+    {
+        $this->gitSshUrl = $gitSshUrl;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGitHttpUrl(): ?string
+    {
+        return $this->gitHttpUrl;
+    }
+
+    /**
+     * @param string|null $gitHttpUrl
+     */
+    public function setGitHttpUrl(?string $gitHttpUrl): void
+    {
+        $this->gitHttpUrl = $gitHttpUrl;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVisibilityLevel(): ?string
+    {
+        return $this->visibilityLevel;
+    }
+
+    /**
+     * @param string|null $visibilityLevel
+     */
+    public function setVisibilityLevel(?string $visibilityLevel): void
+    {
+        $this->visibilityLevel = $visibilityLevel;
     }
 
 }

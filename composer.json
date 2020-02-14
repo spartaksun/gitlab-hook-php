@@ -1,23 +1,25 @@
 {
-    "name": "spartaksun/gitlab-hook-php",
-    "description": "Framework agnostic handler for GitLab project hooks",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Alexey Belyakovskiy",
-            "email": "2697024@gmail.com"
-        }
-    ],
-    "scripts": {
-      "test": "phpunit"
-    },
-    "require": {
-        "phpunit/phpunit": "^8.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Spartaksun\\GitLabHook\\": "src/"
-        }
+  "name": "spartaksun/gitlab-hook-php",
+  "description": "Framework agnostic handler for GitLab project hooks",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexey Belyakovskiy",
+      "email": "2697024@gmail.com"
     }
+  ],
+  "scripts": {
+    "test": "phpunit"
+  },
+  "require": {
+    "phpunit/phpunit": "^8.5",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Spartaksun\\GitLabHook\\": "src/",
+      "Spartaksun\\GitLabHook\\Test\\": "test/"
+    }
+  }
 }

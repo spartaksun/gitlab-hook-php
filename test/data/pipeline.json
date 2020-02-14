@@ -1,6 +1,6 @@
 {
   "object_kind": "pipeline",
-  "object_attributes":{
+  "object_attributes": {
     "id": 31,
     "ref": "master",
     "tag": false,
@@ -8,7 +8,7 @@
     "before_sha": "bcbb5ec396a2c0f828686f14fac9b80b780504f2",
     "source": "merge_request_event",
     "status": "success",
-    "stages":[
+    "stages": [
       "build",
       "test",
       "deploy"
@@ -35,12 +35,12 @@
     "merge_status": "can_be_merged",
     "url": "http://192.168.64.1:3005/gitlab-org/gitlab-test/merge_requests/1"
   },
-  "user":{
+  "user": {
     "name": "Administrator",
     "username": "root",
     "avatar_url": "http://www.gravatar.com/avatar/e32bd13e2add097461cb96824b7a829c?s=80\u0026d=identicon"
   },
-  "project":{
+  "project": {
     "id": 1,
     "name": "Gitlab Test",
     "description": "Atque in sunt eos similique dolores voluptatem.",
@@ -53,17 +53,17 @@
     "path_with_namespace": "gitlab-org/gitlab-test",
     "default_branch": "master"
   },
-  "commit":{
+  "commit": {
     "id": "bcbb5ec396a2c0f828686f14fac9b80b780504f2",
     "message": "test\n",
     "timestamp": "2016-08-12T17:23:21+02:00",
     "url": "http://example.com/gitlab-org/gitlab-test/commit/bcbb5ec396a2c0f828686f14fac9b80b780504f2",
-    "author":{
+    "author": {
       "name": "User",
       "email": "user@gitlab.com"
     }
   },
-  "builds":[
+  "builds": [
     {
       "id": 380,
       "stage": "deploy",
@@ -75,13 +75,13 @@
       "when": "manual",
       "manual": true,
       "allow_failure": false,
-      "user":{
+      "user": {
         "name": "Administrator",
         "username": "root",
         "avatar_url": "http://www.gravatar.com/avatar/e32bd13e2add097461cb96824b7a829c?s=80\u0026d=identicon"
       },
       "runner": null,
-      "artifacts_file":{
+      "artifacts_file": {
         "filename": null,
         "size": null
       }
@@ -97,18 +97,18 @@
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
-      "user":{
+      "user": {
         "name": "Administrator",
         "username": "root",
         "avatar_url": "http://www.gravatar.com/avatar/e32bd13e2add097461cb96824b7a829c?s=80\u0026d=identicon"
       },
       "runner": {
-        "id":380987,
-        "description":"shared-runners-manager-6.gitlab.com",
-        "active":true,
-        "is_shared":true
+        "id": 380987,
+        "description": "shared-runners-manager-6.gitlab.com",
+        "active": true,
+        "is_shared": true
       },
-      "artifacts_file":{
+      "artifacts_file": {
         "filename": null,
         "size": null
       }
@@ -124,18 +124,18 @@
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
-      "user":{
+      "user": {
         "name": "Administrator",
         "username": "root",
         "avatar_url": "http://www.gravatar.com/avatar/e32bd13e2add097461cb96824b7a829c?s=80\u0026d=identicon"
       },
       "runner": {
-        "id":380987,
-        "description":"shared-runners-manager-6.gitlab.com",
-        "active":true,
-        "is_shared":true
+        "id": 380987,
+        "description": "shared-runners-manager-6.gitlab.com",
+        "active": true,
+        "is_shared": true
       },
-      "artifacts_file":{
+      "artifacts_file": {
         "filename": null,
         "size": null
       }
@@ -151,18 +151,18 @@
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
-      "user":{
+      "user": {
         "name": "Administrator",
         "username": "root",
         "avatar_url": "http://www.gravatar.com/avatar/e32bd13e2add097461cb96824b7a829c?s=80\u0026d=identicon"
       },
       "runner": {
-        "id":380987,
-        "description":"shared-runners-manager-6.gitlab.com",
-        "active":true,
-        "is_shared":true
+        "id": 380987,
+        "description": "shared-runners-manager-6.gitlab.com",
+        "active": true,
+        "is_shared": true
       },
-      "artifacts_file":{
+      "artifacts_file": {
         "filename": null,
         "size": null
       }
@@ -178,13 +178,13 @@
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
-      "user":{
+      "user": {
         "name": "Administrator",
         "username": "root",
         "avatar_url": "http://www.gravatar.com/avatar/e32bd13e2add097461cb96824b7a829c?s=80\u0026d=identicon"
       },
       "runner": null,
-      "artifacts_file":{
+      "artifacts_file": {
         "filename": null,
         "size": null
       }

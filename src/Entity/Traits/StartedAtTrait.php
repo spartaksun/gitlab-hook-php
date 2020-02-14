@@ -1,4 +1,5 @@
-<?php /* @noinspection PhpUnused */declare(strict_types=1);
+<?php /* @noinspection PhpUnused */
+declare(strict_types=1);
 
 
 namespace Spartaksun\GitLabHook\Entity\Traits;
@@ -9,14 +10,14 @@ use Exception;
 trait StartedAtTrait
 {
     /**
-     * @var DateTimeImmutable
+     * @var ?DateTimeImmutable
      */
     private $startedAt;
 
     /**
-     * @return DateTimeImmutable
+     * @return DateTimeImmutable|null ?DateTimeImmutable
      */
-    public function getStartedAt(): DateTimeImmutable
+    public function getStartedAt(): ?DateTimeImmutable
     {
         return $this->startedAt;
     }
@@ -25,9 +26,11 @@ trait StartedAtTrait
      * @param string $startedAt
      * @throws Exception
      */
-    public function setStartedAt(string $startedAt): void
+    public function setStartedAt(?string $startedAt): void
     {
-        $this->startedAt = new DateTimeImmutable($startedAt);
+        if($startedAt) {
+            $this->startedAt = new DateTimeImmutable($startedAt);
+        }
     }
 
 }

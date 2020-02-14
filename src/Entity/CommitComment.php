@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Spartaksun\GitLabHook\Entity;
 
 
-use Spartaksun\GitLabHook\Entity\Traits\CommitAuthorAwareTrait;
+use Spartaksun\GitLabHook\Entity\Traits\AuthorAwareTrait;
 use Spartaksun\GitLabHook\Entity\Traits\CommitAwareTrait;
 use Spartaksun\GitLabHook\Entity\Traits\CreatedUpdatedTrait;
 use Spartaksun\GitLabHook\Entity\Traits\IssueCommentTrait;
@@ -26,7 +26,7 @@ class CommitComment extends BaseObject implements Noteable
     use CommitAwareTrait;
     use ProjectAwareTrait;
     use RepositoryAwareTrait;
-    use CommitAuthorAwareTrait;
+    use AuthorAwareTrait;
     use CreatedUpdatedTrait;
     use IssueCommentTrait;
 }

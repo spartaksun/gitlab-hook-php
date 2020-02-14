@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spartaksun\GitLabHook\Entity;
 
+use DateTimeImmutable;
 use Spartaksun\GitLabHook\Entity\Traits\CreatedUpdatedTrait;
 
 /**
@@ -41,7 +42,7 @@ class Snippet extends BaseObject
      */
     private $fileName;
     /**
-     * @var \DateTimeImmutable|null
+     * @var DateTimeImmutable|null
      */
     private $expiresAt;
 
@@ -136,17 +137,17 @@ class Snippet extends BaseObject
     }
 
     /**
-     * @return \DateTimeImmutable|null
+     * @return DateTimeImmutable|null
      */
-    public function getExpiresAt(): ?\DateTimeImmutable
+    public function getExpiresAt(): ?DateTimeImmutable
     {
         return $this->expiresAt;
     }
 
     /**
-     * @param \DateTimeImmutable|null $expiresAt
+     * @param DateTimeImmutable|null $expiresAt
      */
-    public function setExpiresAt(?\DateTimeImmutable $expiresAt): void
+    public function setExpiresAt(?DateTimeImmutable $expiresAt): void
     {
         $this->expiresAt = $expiresAt;
     }

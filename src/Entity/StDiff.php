@@ -25,6 +25,10 @@ class StDiff
      * @var string|null
      */
     private $aMode;
+
+    /** @var string|null */
+    private $bMode;
+
     /**
      * @var bool|null
      */
@@ -149,6 +153,22 @@ class StDiff
     public function setDeletedFile(?bool $deletedFile): void
     {
         $this->deletedFile = $deletedFile;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getBMode(): ?string
+    {
+        return $this->bMode;
+    }
+
+    /**
+     * @param string|null $bMode
+     */
+    public function setBMode(?string $bMode): void
+    {
+        $this->bMode = $bMode;
     }
 }
 
