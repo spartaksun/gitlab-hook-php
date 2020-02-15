@@ -54,7 +54,7 @@ class GitLabHook
      * @throws GitLabHookException
      * @throws Exception
      */
-    public function process(string $tokenHeader, string $eventHeader, string $body)
+    public function process(string $tokenHeader, string $body)
     {
         // todo check event headers
         if ($tokenHeader !== $this->secretToken) {

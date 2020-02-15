@@ -23,7 +23,7 @@ class GitLabHookTest extends TestCase
 
         $this->expectException(GitLabHookException::class);
         $hook = new GitLabHook('11111');
-        $hook->process('22222', '', $data);
+        $hook->process('22222', $data);
 
     }
 }

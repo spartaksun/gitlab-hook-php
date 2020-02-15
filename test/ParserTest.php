@@ -67,7 +67,7 @@ class ParserTest extends TestCase
         $this->assertTrue(is_string($data));
 
         return (new GitLabHook('12345'))
-            ->process('12345', '', $data);
+            ->process('12345', $data);
     }
 
     /**
