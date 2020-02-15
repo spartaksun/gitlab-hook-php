@@ -326,7 +326,6 @@ class GitLabHook
      */
     private function populateObject(object $object, array $values, $map): object
     {
-        echo get_class($object) . "\n";
         foreach ($values as $key => $value) {
             if ($key === 'object_attributes') {
                 continue;
@@ -334,7 +333,7 @@ class GitLabHook
 
             $methodName = $this->toCamelCase("set_{$key}");
             if (!is_callable([$object, $methodName])) {
-                echo sprintf("/** @var string|null */\nprivate $%s;\n", $this->toCamelCase($key));
+//                echo sprintf("/** @var string|null */\nprivate $%s;\n", $this->toCamelCase($key));
             } else
                 call_user_func(
                     [$object, $methodName],

@@ -2,6 +2,7 @@
   "name": "spartaksun/gitlab-hook-php",
   "description": "Framework agnostic handler for GitLab project hooks",
   "type": "library",
+  "version": "0.1.0",
   "license": "MIT",
   "authors": [
     {
