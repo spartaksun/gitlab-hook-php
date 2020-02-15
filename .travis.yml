@@ -1,0 +1,6 @@
+language: php
+
+before_script:
+  - composer update --no-interaction
+script:
+  - composer test ./test/
