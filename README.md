@@ -1,6 +1,12 @@
 # Gitlab webhook handler
 Framework agnostic handling GitLab project hooks
 
+Install:
+`
+composer require spartaksun/gitlab-hook-php
+`
+
+Usage:
 ```php
 <?php
 
