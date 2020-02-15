@@ -97,7 +97,7 @@
     "last_commit": {
       "id": "562e173be03b8ff2efb05345d12df18815438a4b",
       "message": "Merge branch in this test\n",
-      "timestamp": "2015-04-08T21: 00:25-07:00",
+      "timestamp": "2015-04-08T21:00:25-07:00",
       "url": "http://example.com/gitlab-org/gitlab-test/commit/562e173be03b8ff2efb05345d12df18815438a4b",
       "author": {
         "name": "John Smith",

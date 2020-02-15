@@ -9,6 +9,7 @@ use Spartaksun\GitLabHook\Entity\CodeSnippetComment;
 use Spartaksun\GitLabHook\Entity\Commit;
 use Spartaksun\GitLabHook\Entity\CommitAuthor;
 use Spartaksun\GitLabHook\Entity\CommitComment;
+use Spartaksun\GitLabHook\Entity\File;
 use Spartaksun\GitLabHook\Entity\Issue;
 use Spartaksun\GitLabHook\Entity\IssueComment;
 use Spartaksun\GitLabHook\Entity\Job;
@@ -267,6 +268,9 @@ class GitLabHook
                 ],
                 'builds' => [
                     'class_array' => Build::class
+                ],
+                'merge_request' => [
+                    'class' => MergeRequest::class
                 ]
             ],
             Push::class => [
@@ -278,6 +282,17 @@ class GitLabHook
                 ],
                 'commits' => [
                     'class_array' => Commit::class
+                ]
+            ],
+            Build::class => [
+                'user' => [
+                    'class' => User::class
+                ],
+                'artifacts_file' => [
+                    'class' => File::class
+                ],
+                'runner' => [
+                    'class' => JobRunner::class
                 ]
             ],
             WikiPage::class => [
@@ -344,15 +359,14 @@ class GitLabHook
     }
 
     /**
-     * @param string $key
-     * @param  $map
      * @param $value
+     * @param  $map
      * @return array|object|string|boolean
      * @throws Exception
      */
     private function prepareArguments($value, $map)
     {
-        if (empty($map)) {
+        if (empty($map) || empty($value)) {
             return $value;
         }
 

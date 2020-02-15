@@ -14,12 +14,18 @@ use Spartaksun\GitLabHook\Entity\IssueComment;
 use Spartaksun\GitLabHook\Entity\Job;
 use Spartaksun\GitLabHook\Entity\JobRunner;
 use Spartaksun\GitLabHook\Entity\MergeRequest;
+use Spartaksun\GitLabHook\Entity\MergeRequestComment;
+use Spartaksun\GitLabHook\Entity\Pipeline;
 use Spartaksun\GitLabHook\Entity\Project;
 use Spartaksun\GitLabHook\Entity\ProjectLabel;
+use Spartaksun\GitLabHook\Entity\Push;
 use Spartaksun\GitLabHook\Entity\Repository;
 use Spartaksun\GitLabHook\Entity\Snippet;
 use Spartaksun\GitLabHook\Entity\StDiff;
+use Spartaksun\GitLabHook\Entity\TagPush;
 use Spartaksun\GitLabHook\Entity\User;
+use Spartaksun\GitLabHook\Entity\Wiki;
+use Spartaksun\GitLabHook\Entity\WikiPage;
 use Spartaksun\GitLabHook\Exception\GitLabHookException;
 use Spartaksun\GitLabHook\GitLabHook;
 
@@ -40,7 +46,6 @@ class ParserTest extends TestCase
         $this->assertInstanceOf(Project::class, $result->getProject());
 
         $this->assertInstanceOf(StDiff::class, $result->getStDiff());
-
 
         $this->assertInstanceOf(DateTimeImmutable::class, $result->getUpdatedAt());
         $this->assertInstanceOf(DateTimeImmutable::class, $result->getCreatedAt());
@@ -180,6 +185,109 @@ class ParserTest extends TestCase
         $this->assertInstanceOf(Project::class, $result->getProject());
         $this->assertInstanceOf(Project::class, $result->getSource());
 
+        $this->assertEquals('git@example.com:awesome_space/awesome_project.git', $result->getSource()->getGitSshUrl());
+        $this->assertEquals('da1560886d4f094c3e6c9ef40349f7d38b5d27d7', $result->getLastCommit()->getId());
+        $this->assertEquals('gitlabdev@dv6700.(none)', $result->getLastCommit()->getAuthor()->getEmail());
 
+        $this->assertEquals('user1', $result->getAssignee()->getUserName());
+        foreach ($result->getLabels() as $label) {
+            $this->assertInstanceOf(ProjectLabel::class, $label);
+        }
+
+        $this->assertEquals(206, $result->getLabels()[0]->getId());
+    }
+
+    /**
+     * @throws GitLabHookException
+     */
+    public function testMergeRequestComment() {
+        /** @var MergeRequestComment $result */
+        $result = $this->processData(__DIR__ . "/data/mergeRequestComment.json");
+        $this->assertInstanceOf(MergeRequestComment::class, $result);
+
+        $this->assertInstanceOf(Repository::class, $result->getRepository());
+        $this->assertInstanceOf(User::class, $result->getUser());
+        $this->assertInstanceOf(Project::class, $result->getProject());
+        $this->assertInstanceOf(MergeRequest::class, $result->getMergeRequest());
+        $this->assertInstanceOf(DateTimeImmutable::class, $result->getCreatedAt());
+
+        $this->assertEquals(1244, $result->getId());
+    }
+
+    /**
+     * @throws GitLabHookException
+     */
+    public function testPipeline() {
+        /** @var Pipeline $result */
+        $result = $this->processData(__DIR__ . "/data/pipeline.json");
+        $this->assertInstanceOf(Pipeline::class, $result);
+
+        $this->assertInstanceOf(User::class, $result->getUser());
+        $this->assertInstanceOf(Project::class, $result->getProject());
+        $this->assertInstanceOf(Commit::class, $result->getCommit());
+        $this->assertInstanceOf(MergeRequest::class, $result->getMergeRequest());
+
+        $runner = $result->getBuilds()[1]->getRunner();
+
+        $this->assertInstanceOf(JobRunner::class, $runner);
+    }
+
+    /**
+     * @throws GitLabHookException
+     */
+    public function testPush() {
+        /** @var Push $result */
+        $result = $this->processData(__DIR__ . "/data/push.json");
+        $this->assertInstanceOf(Push::class, $result);
+
+        $this->assertInstanceOf(User::class, $result->getUser());
+        $this->assertInstanceOf(Project::class, $result->getProject());
+
+        foreach ($result->getCommits() as $commit) {
+            $this->assertInstanceOf(Commit::class, $commit);
+        }
+
+        $this->assertEquals('jsmith', $result->getUser()->getUserName());
+        $this->assertEquals(4, $result->getUser()->getId());
+        $this->assertEquals(4, $result->getTotalCommitsCount());
+        $this->assertEquals('95790bf891e76fee5e1747ab589903a6a1f80f22', $result->getBefore());
+        $this->assertEquals('da1560886d4f094c3e6c9ef40349f7d38b5d27d7', $result->getAfter());
+        $this->assertEquals('fixed readme', $result->getCommits()[1]->getMessage());
+    }
+
+    /**
+     * @throws GitLabHookException
+     */
+    public function testTagPush() {
+        /** @var TagPush $result */
+        $result = $this->processData(__DIR__ . "/data/tagPush.json");
+        $this->assertInstanceOf(TagPush::class, $result);
+
+        $this->assertInstanceOf(User::class, $result->getUser());
+        $this->assertInstanceOf(Project::class, $result->getProject());
+        $this->assertInstanceOf(Repository::class, $result->getRepository());
+
+        foreach ($result->getCommits() as $commit) {
+            $this->assertInstanceOf(Commit::class, $commit);
+        }
+
+        $this->assertEquals('John Smith', $result->getUser()->getName());
+        $this->assertEquals(1, $result->getUser()->getId());
+    }
+
+    /**
+     * @throws GitLabHookException
+     */
+    public function testWikiPage() {
+        /** @var WikiPage $result */
+        $result = $this->processData(__DIR__ . "/data/wikiPage.json");
+        $this->assertInstanceOf(WikiPage::class, $result);
+        $this->assertInstanceOf(User::class, $result->getUser());
+        $this->assertInstanceOf(Project::class, $result->getProject());
+        $this->assertInstanceOf(Wiki::class, $result->getWiki());
+
+        $this->assertEquals('root', $result->getUser()->getUserName());
+        $this->assertEquals('http://example.com/root/awesome-project/-/wikis/home', $result->getWiki()->getWebUrl());
+        $this->assertEquals('awesome content goes here', $result->getContent());
     }
 }
