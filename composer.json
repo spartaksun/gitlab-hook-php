@@ -2,7 +2,7 @@
   "name": "spartaksun/gitlab-hook-php",
   "description": "Framework agnostic handler for GitLab project hooks",
   "type": "library",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "authors": [
     {
@@ -17,7 +17,7 @@
     "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8.5",
+    "phpunit/phpunit": "^8.5"
   },
   "autoload": {
     "psr-4": {
